@@ -1,20 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-<title>Mijn Klok</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mijn Wereldklok</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #06b6d4);
+}
+
+.kaart {
+    background: rgba(255,255,255,0.15);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#clock {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+#date {
+    margin-top: 15px;
+    font-size: 22px;
+}
+</style>
 </head>
+
 <body>
-<h1>Hoe laat is het?</h1>
-<div id="clock"></div>
+
+<div class="kaart">
+    <h1>🌍 Hoe laat is het?</h1>
+    <div id="clock">00:00:00</div>
+    <div id="date"></div>
+</div>
 
 <script>
 function updateClock() {
+    const now = new Date();
+
     document.getElementById("clock").innerHTML =
-        new Date().toLocaleTimeString();
+        now.toLocaleTimeString("nl-NL");
+
+    document.getElementById("date").innerHTML =
+        now.toLocaleDateString("nl-NL", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
 }
 
-setInterval(updateClock, 1000);
 updateClock();
+setInterval(updateClock, 1000);
 </script>
 
 </body>
