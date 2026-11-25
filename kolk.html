@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mijn Klok</title>
+</head>
+<body>
+<h1>Hoe laat is het?</h1>
+<div id="clock"></div>
+
+<script>
+function updateClock() {
+    document.getElementById("clock").innerHTML =
+        new Date().toLocaleTimeString();
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>
